@@ -1,0 +1,133 @@
+<!-- static/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTMX CRUD Agenda</title>
+    <link rel ="stylesheet" href="\static\css\agenda.css">
+</head>
+<body>
+    <h1>HTMX CRUD Agenda</h1>
+
+
+    <div class="Agenda-day">
+        <h2>January 15, 2023</h2>
+
+        <!-- Goal of the Day -->
+        <div class="Agenda-goal">
+            <h3>Goal of the Day</h3>
+            <p>Stay focused and complete the project milestone.</p>
+        </div>
+
+        <!-- Tasks Grid -->
+        <div class="Agenda-tasks-grid">
+            <!-- Due Now -->
+            <div class="Agenda-task-group due-now">
+                <h3>Due Now</h3>
+                <div class="Agenda-agenda-event">
+                    <div class="Agenda-agenda-heading">
+                        <h4>Task 1</h4>
+                    </div>
+                    <div class="Agenda-agenda-body">
+                        <p>Task details go here...</p>
+                    </div>
+                    <div class="Agenda-agenda-footer">
+                        <span>Time: 10:00 AM - 11:00 AM</span>
+                    </div>
+                    <br>
+                    <div class = "button-holder">
+                        
+                        <button id = "task-complete"> Completed</button>
+                        <button id = "task-later"> Due Later </button>
+                        <button id = "task-delete"> Delete</button>
+                    </div>
+                </div>
+
+
+                <!-- Add more Due Now tasks as needed -->
+            </div>
+
+            <!-- Due Later -->
+            <div class="Agenda-task-group due-later">
+                <h3>Due Later</h3>
+                <div class="Agenda-agenda-event">
+                    <div class="Agenda-agenda-heading">
+                        <h4>Task 2</h4>
+                    </div>
+                    <div class="Agenda-agenda-body">
+                        <p>Task details go here...</p>
+                    </div>
+                    <div class="Agenda-agenda-footer">
+                        <span>Time: 2:00 PM - 3:00 PM</span>
+                    </div>
+                    <br>
+                    <div class = "button-holder">
+                        
+                        <button id = "task-now"> Due Now</button>
+                        <button id = "task-delegate"> Delegate </button>
+                        <button id = "task-delete"> Delete</button>
+                    </div>
+                </div>
+
+                <!-- Add more Due Later tasks as needed -->
+            </div>
+
+            <!-- Delegate -->
+            <div class="Agenda-task-group delegate">
+                <h3>Delegate</h3>
+                <div class="Agenda-agenda-event">
+                    <div class="Agenda-agenda-heading">
+                        <h4>Task 3</h4>
+                    </div>
+                    <div class="Agenda-agenda-body">
+                        <p>Task details go here...</p>
+                    </div>
+                    <div class="Agenda-agenda-footer">
+                        <span>Time: 4:00 PM - 5:00 PM</span>
+                    </div>
+                    <br>
+                    <div class = "button-holder">
+                       
+                        <button id = "task-now"> Due Now</button>
+                        <button id = "task-later"> Due Later </button>
+                        <button id = "task-delete"> Delete</button>
+                    </div>
+                </div>
+
+                <!-- Add more Delegate tasks as needed -->
+            </div>
+        </div>
+    </div>
+    <div>
+        <h2>Events</h2>
+        <button hx-get="/events" hx-swap="outerHTML">Refresh</button>
+        <ul>
+            <li hx-get="/events/{id}" hx-indicator="#event-{id}">
+                <span hx-get="/events/{id}" hx-swap="innerHTML">{.Title}</span>
+                <button hx-delete="/events/{id}" hx-confirm="Are you sure?" hx-swap="outerHTML">Delete</button>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <h2>Create Event</h2>
+        <form hx-post="/events" hx-swap="outerHTML" hx-trigger="submit">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="Title" required>
+            <br>
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="Description">
+            <br>
+            <label for="start">Start:</label>
+            <input type="time" id="start" name="Start" required>
+            <br>
+            <label for="end">End:</label>
+            <input type="time" id="end" name="End" required>
+            <br>
+            <button type="submit">Create Event</button>
+        </form>
+    </div>
+    <script src="https://unpkg.com/htmx.org@1.7.0/dist/htmx.js"></script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+:root {
+    --gray-700: rgb(55, 65, 81);
+    --gray-800: rgb(31, 41, 55);
+    --gray-900: rgb(17, 24, 39);
+    --blue-500: rgb(59, 130, 246); 
+    --tw-gradient-stops: var(--gray-800), var(--gray-900);
+    --bubble-size: 1em; /* Adjust the size of the bubbles */
+    --bubble-color: rgb(126, 165, 192); 
+    --random-animation-time : 0.2s;
+}
+body {
+    color: white;
+    background: black;
+    margin:0;
+    font-size: 3.5vw;
+}
+.background-container {
+    background-image: linear-gradient(to right, var(--tw-gradient-stops));
+    width: 100%; 
+    min-height: 100vh; 
+}
+header {
+    display: flex; 
+    margin-bottom: 2.5rem; 
+    justify-content: center; 
+    align-items: center; 
+}
+main {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr)); 
+    gap: 2.5rem; 
+
+
+    @media (min-width: 600px) { 
+    grid-template-columns: repeat(2, minmax(0, 1fr)); 
+    }
+    @media (min-width: 1024px) { 
+    grid-template-columns: repeat(3, minmax(0, 1fr)); 
+    }
+}
+section {
+    padding: 1.5em; 
+    border-radius: 0.5em; 
+    background-color: var(--gray-700); 
+    box-shadow: 0 0.6em 0.9em -0.20em rgba(0, 0, 0, 0.1), 0 0.25em 0.28em -0.1em rgba(0, 0, 0, 0.05); 
+}
+h2 {
+    margin-bottom: 1rem; 
+    font-size: 1.5em;
+    line-height: 2em; 
+    font-weight: 700; 
+    color: white; 
+}
+.container {
+    display: flex; 
+    justify-content: center; 
+}
+
+.wrap {
+    display: grid;
+    grid-template-columns: repeat(4, var(--bubble-size));
+    gap: 0.3em;
+    background-color: color-mix(in srgb, var(--gray-700) 50%, var(--bubble-color) 50%);
+    padding: 0.5em;
+}
+
+.bubble {
+    height: var(--bubble-size);
+    background:  linear-gradient(275deg, white, var(--bubble-color));
+    border-radius: 50%;
+    cursor: pointer;
+}
+.popped {
+    height: calc(var(--bubble-size) * 1.01);
+    background:  color-mix(in srgb, var(--gray-800) 20%, var(--bubble-color) 80%);
+    border-radius: 34%;
+    border: 2px solid black;
+
+}
+.bubble:hover {
+    background: color-mix(in srgb, white 25%, var(--bubble-color) 75%); /* Darker color on hover, adjust as needed */
+}
+.spinner-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-color: #3498db;
+    border-radius: 50%;
+    cursor: grab;
+    user-select: none;
+}
+
+.blade {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 80px;
+    background-color: #fff;
+    transform-origin: 50% 100%;
+}
+
+/* Keyframe animations for initial spin and blade rotation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin-blade {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+#slimeContainer {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background-color: #b7d7e8;
+    cursor: pointer;
+}
+
+.slime {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #8e8e8e;
+    border-radius: 50%;
+    transition: transform 0.2s ease-out;
+}
+#sandContainer {
+    width: 200px;
+    height: 200px;
+    background-color: #fddb3a;
+    cursor: pointer;
+}
+
+.sand {
+    width: 20px;
+    height: 20px;
+    background-color: #d2b55b;
+    border-radius: 50%;
+    position: absolute;
+    transition: transform 0.2s ease-out;
+}
+#stressContainer {
+    width: 200px;
+    height: 200px;
+    background-color: #f1bab0;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stress-ball {
+    width: 80px;
+    height: 80px;
+    background:radial-gradient(#db1e17, #dd7d7a);
+    border: 10px solid #d9534f;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: transform var(--random-animation-time) ease-out;
+}
+@keyframes squeezeAndShake {
+    0%, 100% {
+        transform: scale(0.67) translate(5px, 2px) skewX(1deg) skewY(1deg);
+    }
+    25%, 75% {
+        transform: scale(0.6) translate(5px, 2px);
+    }
+    50% {
+        transform: scale(0.65) translate(-10px, -12px) skewX(-1deg) skewY(1deg);
+    }
+}

@@ -1,0 +1,56 @@
+:root {
+    --text: #f3f6f5;
+    --background: #060808;
+    --primary: #61321d;
+    --secondary: #233126;
+    --accent: #538986;
+    --ratio: calc(100vmin / 100vmax);
+    --border-width: calc(var(--ratio) * 2vw);
+    --agenda-border: calc(var(--ratio) * 2vw) solid var(--secondary);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--text);
+    background-color: var(--background);
+    margin: 20px;
+}
+
+h1 {
+    color: var(--primary);
+}
+
+.Pomodoro-Timer {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.timer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#timer {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px;
+    margin: 5px;
+    background-color: var(--accent);
+    color: var(--text);
+    border: none;
+    cursor: pointer;
+}
+
+reminder-container {
+    margin-top: 20px;
+}
+
+label {
+    margin-right: 10px;
+}
+
+/* Add more styles as needed */

@@ -1,0 +1,167 @@
+:root {
+    --text: #f3f6f5;
+    --background: #060808;
+    --primary: #61321d;
+    --secondary: #233126;
+    --accent: #075c59;
+    --secondary-background: #495060;
+    --agenda-background: #0f1210;
+    --agenda-groups-magic-number: 20;
+    --due-now-color: rgb(var(--agenda-groups-magic-number), 0, 0);
+    --due-later-color: rgb(0, 0, var(--agenda-groups-magic-number));
+    --delegate-color: rgb(0, var(--agenda-groups-magic-number), 0);
+    --agenda-border-width: 0.5vh;
+    --tasks-shadow:  0px 5px 5px #252525;
+    --agenda-border: var(--agenda-border-width) solid var(--secondary);
+    --inner-margins : 1.8%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--text);
+    background-color: var(--background);
+    margin: 20px;
+    font-size: 1.5vw;
+}
+
+h1 {
+    color: var(--primary);
+}
+h2 {
+    margin: var(--inner-margins);
+}
+
+.Agenda-day {
+    margin: calc(var(--agenda-border-width) * 5);
+    border: var(--agenda-border);
+    border-radius: 2%;
+    background-color: var(--agenda-background);
+}
+
+.Agenda-goal {
+    background-color: var(--primary);
+    padding: 10px;
+    border-radius: 8px;
+    margin: var(--inner-margins);
+}
+
+.Agenda-tasks-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--inner-margins);
+    margin: calc(var(--inner-margins)*1.8);
+}
+
+.Agenda-task-group {
+    border: 2px solid var(--secondary);
+    border-radius: 8px;
+    padding: 10px;
+    margin: var(--inner-margins);
+    box-shadow: var(--tasks-shadow);
+
+}
+.due-now {
+    background-color: var(--due-now-color);
+}
+.due-later {
+    background-color: var(--due-later-color);
+}
+.delegate {
+    background-color: var(--delegate-color);
+}
+
+.Agenda-agenda-event {
+    border: 2px solid var(--secondary);
+    border-radius: 8px;
+    margin: calc(var(--inner-margins)*1.8*1.8);
+    padding: 10px;
+    background-color: var(--secondary-background);
+    box-shadow: var(--tasks-shadow);
+}
+
+.Agenda-agenda-heading {
+    background-color: var(--secondary);
+    padding: 8px;
+    border-radius: 4px 4px 0 0;
+}
+
+.Agenda-agenda-heading h4 {
+    margin: 0;
+}
+
+.Agenda-agenda-body {
+    padding: calc(var(--inner-margins)*1.8);
+}
+.due-now .Agenda-agenda-body {
+    background-color: color-mix(in hwb, var(--due-now-color) 50%, var(--secondary-background) 50%);
+    
+}
+.due-later .Agenda-agenda-body {
+    background-color: color-mix(in hwb, var(--due-later-color) 50%, var(--secondary-background) 50%);
+    
+}
+.delegate .Agenda-agenda-body {
+    background-color: color-mix(in hwb, var(--delegate-color) 50%, var(--secondary-background) 50%);
+    
+}
+.Agenda-agenda-footer {
+    background-color: var(--accent);
+    padding: 8px;
+    border-radius: 0 0 4px 4px;
+    border: 2px solid rgb(132, 131, 131);
+}
+
+.Agenda-agenda-footer span {
+    color: var(--text);
+}
+button {
+    border-radius: 5px;
+    padding: 0.3em;
+    border: 3px solid black;
+    cursor: pointer;
+    font-size: 1.2vw;
+ 
+}
+button:hover {
+    box-shadow: 0px 5px 5px rgba(255, 255, 255, 0.459);
+}
+#task-delete {
+    background-color: rgb(179, 107, 107);
+}
+#task-later {
+    background-color: rgb(116, 221, 139);
+}
+#task-now {
+    background-color: rgb(236, 236, 147);
+}
+#task-complete {
+    background-color: rgb(94, 79, 226);
+}
+#task-delegate {
+    background: rgb(189, 100, 189); 
+}
+#task-delete:hover {
+    background: radial-gradient(white, red);
+}
+#task-later:hover {
+    background: radial-gradient(white, green); 
+}
+#task-now:hover {
+    background: radial-gradient(white, yellow);
+}
+#task-complete:hover {
+    background: radial-gradient(white, blue);;
+}
+#task-delegate:hover {
+    background: radial-gradient(white, magenta);
+}
+.button-holder {
+    width: 100%;
+    margin-top: auto;
+    margin-left: auto;
+    display: grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap: 0.5em;
+    
+
+}

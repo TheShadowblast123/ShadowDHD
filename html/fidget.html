@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>FIDGET</title>
+        <link rel="stylesheet" href="/static/css/fidget.css">
+    </head>
+    <body>
+        <div class="background-container">
+            <header>
+                <h1>Interactive Fidget Website</h1>
+            </header>
+            <main>
+                <section>
+                    <h2>Spinner?</h2>
+                    <div class="spinner-container" id="spinner" onmousedown="startSpinning(event)" onmouseup="stopSpinning()">
+                        <div class="blade" id="blade-1"></div>
+                        <div class="blade" id="blade-2"></div>
+                        <div class="blade" id="blade-3"></div>
+                        <div class="blade" id="blade-4"></div>
+                    </div>
+                
+                </section>
+                <section>
+                    <h2>Pop it</h2>
+                    <div class="container">
+                        <div class = "wrap">  
+                            <div onclick = "pop(this)" class="bubble"></div>
+                            <div onclick = "pop(this)" class="bubble"></div>
+                            <div onclick = "pop(this)" class="bubble"></div>
+                            <div onclick = "pop(this)" class="bubble"></div>
+                            <div onclick = "pop(this)" class="bubble"></div>
+                            <div onclick = "pop(this)" class="bubble"></div>
+                            <div onclick = "pop(this)" class="bubble"></div>
+                            <div onclick = "pop(this)" class="bubble"></div>
+                            <div onclick = "pop(this)" class="bubble"></div>
+                            <div onclick = "pop(this)" class="bubble"></div>
+                            <div onclick = "pop(this)" class="bubble"></div>
+                            <div onclick = "pop(this)" class="bubble"></div>
+                        </div>
+                        <br>
+                        <audio id="popSound">
+                            <source src="/static/sounds/pop.wav" type="audio/wav">
+                            <!-- Add additional source elements for different audio formats if needed -->
+                        </audio>
+                        
+                        <audio id="clickSound">
+                            <source src="/static/sounds/click.wav" type="audio/wav">
+                            <!-- Add additional source elements for different audio formats if needed -->
+                        </audio>
+                    </div>
+                    <p id = "count">0 Clicks</p>
+                </section>
+
+                <section>
+                    <h2>Squeeze</h2>
+                    <div class="container" id="stressContainer" onmousedown="squeezeBall()" onmouseup="releaseBall()">
+                        <div class="stress-ball" id="stressBall"></div>
+                    </div>
+                </section>
+
+            </main>
+
+        </div>
+
+        <script src="/static/js/fidget.js"></script>
+        <script src="https://unpkg.com/htmx.org@1.7.0/dist/htmx.js"></script>
+    </body>
+</html>
